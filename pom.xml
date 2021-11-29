@@ -26,27 +26,6 @@
     </properties>
     <dependencies>
         <dependency>
-            <groupId>org.hyperledger.sawtooth</groupId>
-            <artifactId>sawtooth-sdk-signing</artifactId>
-            <version>v0.1.2</version>
-        </dependency>
-        <dependency>
-            <groupId>org.hyperledger.sawtooth</groupId>
-            <artifactId>sawtooth-sdk-protos</artifactId>
-            <version>v0.1.2</version>
-        </dependency>
-        <dependency>
-            <groupId>org.hyperledger.sawtooth</groupId>
-            <artifactId>sawtooth-sdk-transaction-processor</artifactId>
-            <version>v0.1.2</version>
-        </dependency>
-        <dependency>
-            <groupId>co.nstant.in</groupId>
-            <artifactId>cbor</artifactId>
-            <version>0.9</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.26</version>
@@ -60,11 +39,6 @@
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
             <version>1.7.25</version>
-        </dependency>
-        <dependency>
-            <groupId>org.openstreetmap.jmapviewer</groupId>
-            <artifactId>jmapviewer</artifactId>
-            <version>2.15</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
@@ -85,11 +59,6 @@
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
             <version>4.5.10</version>
-        </dependency>
-        <dependency>
-            <groupId>com.squareup.retrofit2</groupId>
-            <artifactId>retrofit</artifactId>
-            <version>2.9.0</version>
         </dependency>
     </dependencies>
 </project>
