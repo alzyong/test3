@@ -3,11 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package GUI_V09;
+package GUI_V1;
 
 import java.awt.Component;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import javax.swing.*;
+
+import Backend.DatabaseAccess;
 
 /**
  *
@@ -18,8 +22,8 @@ public class Temperature_Tracking extends javax.swing.JFrame {
     /**
      * Creates new form ManageAccount
      */
-    public Temperature_Tracking() {
-        initComponents();
+    public Temperature_Tracking(String devID, String TranID) {
+        initComponents(devID,TranID);
     }
 
     /**
@@ -29,8 +33,9 @@ public class Temperature_Tracking extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
-
+    private void initComponents(String devID,String TranID) {
+        ArrayList<String> Temp = DatabaseAccess.TemperatureGet(devID);
+        ArrayList<String> Humi = DatabaseAccess.HumidityGet(devID);
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -40,8 +45,8 @@ public class Temperature_Tracking extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
         jLabel126 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jPanel12 = new javax.swing.JPanel();
         jLabel23 = new javax.swing.JLabel();
@@ -113,32 +118,22 @@ public class Temperature_Tracking extends javax.swing.JFrame {
         jLabel3.setBackground(new java.awt.Color(153, 153, 153));
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/icons8-transaction-approved-32.png"))); // NOI18N
         jLabel3.setText("jLabel3");
-        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel3MouseClicked(evt);
-            }
-        });
+
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/icons8-search-account-64.png"))); // NOI18N
         jLabel4.setText("jLabel4");
-        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel4MouseClicked(evt);
-            }
-        });
+
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/icons8-list-50.png"))); // NOI18N
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/icons8-business-report.png"))); // NOI18N
-        jLabel7.setText("jLabel7");
 
         jLabel126.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/icons8-product-24.png"))); // NOI18N
         jLabel126.setText("jLabel7");
-        jLabel126.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel126MouseClicked(evt);
-            }
-        });
+
+
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/icons8-computer-30.png"))); // NOI18N
+        jLabel16.setText("jLabel7");
+
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -150,8 +145,8 @@ public class Temperature_Tracking extends javax.swing.JFrame {
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel126, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel126, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -166,8 +161,8 @@ public class Temperature_Tracking extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel126)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel7)
-                .addGap(0, 245, Short.MAX_VALUE))
+                .addComponent(jLabel16)
+                .addGap(0, 244, Short.MAX_VALUE))
         );
 
         jLabel14.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
@@ -180,11 +175,7 @@ public class Temperature_Tracking extends javax.swing.JFrame {
         jLabel23.setText("Verofax");
 
         jLabel24.setText("Sign Out");
-        jLabel24.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel24MouseClicked(evt);
-            }
-        });
+
 
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
         jPanel12.setLayout(jPanel12Layout);
@@ -236,7 +227,7 @@ public class Temperature_Tracking extends javax.swing.JFrame {
         jLabel8.setText("MIN");
 
         jTextField1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jTextField1.setText("20°C");
+        jTextField1.setText(Temp.get(1)+"°C");
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
@@ -270,7 +261,7 @@ public class Temperature_Tracking extends javax.swing.JFrame {
         jLabel9.setText("Current");
 
         jTextField2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jTextField2.setText("23°C");
+        jTextField2.setText(Temp.get(2)+"°C");
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField2ActionPerformed(evt);
@@ -307,7 +298,7 @@ public class Temperature_Tracking extends javax.swing.JFrame {
         jLabel10.setText("MAX");
 
         jTextField3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jTextField3.setText("25°C");
+        jTextField3.setText(Temp.get(0)+"°C");
         jTextField3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField3ActionPerformed(evt);
@@ -364,7 +355,7 @@ public class Temperature_Tracking extends javax.swing.JFrame {
         jLabel12.setText("MIN");
 
         jTextField4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jTextField4.setText("13%");
+        jTextField4.setText(Humi.get(1)+"%");
         jTextField4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField4ActionPerformed(evt);
@@ -398,7 +389,7 @@ public class Temperature_Tracking extends javax.swing.JFrame {
         jLabel13.setText("MAX");
 
         jTextField5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jTextField5.setText("18%");
+        jTextField5.setText(Humi.get(0)+"%");
         jTextField5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField5ActionPerformed(evt);
@@ -432,7 +423,7 @@ public class Temperature_Tracking extends javax.swing.JFrame {
         jLabel15.setText("Current");
 
         jTextField6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jTextField6.setText("15%");
+        jTextField6.setText(Humi.get(2)+"%");
         jTextField6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField6ActionPerformed(evt);
@@ -506,11 +497,7 @@ public class Temperature_Tracking extends javax.swing.JFrame {
         );
 
         jButton4.setText("Back");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
+
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -546,9 +533,58 @@ public class Temperature_Tracking extends javax.swing.JFrame {
         );
 
         pack();
+        Timer t = new Timer(4000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ArrayList<String> Temp = DatabaseAccess.TemperatureGet(devID);
+                ArrayList<String> Humi = DatabaseAccess.HumidityGet(devID);
+                jTextField1.setText(Temp.get(1)+"°C");
+                jTextField2.setText(Temp.get(2)+"°C");
+                jTextField3.setText(Temp.get(0)+"°C");
+                jTextField4.setText(Humi.get(1)+"%");
+                jTextField5.setText(Humi.get(0)+"%");
+                jTextField6.setText(Humi.get(2)+"%");
+            }
+        });
+        t.start();
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt,TranID,t);
+            }
+        });
+        jLabel24.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel24MouseClicked(evt,t);
+            }
+        });
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt,t);
+            }
+        });
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel3MouseClicked(evt,t);
+            }
+        });
+        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel6MouseClicked(evt,t);
+            }
+        });
+        jLabel126.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel126MouseClicked(evt,t);
+            }
+        });
+        jLabel16.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel16MouseClicked(evt,t);
+            }
+        });
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jLabel24MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel24MouseClicked
+    private void jLabel24MouseClicked(java.awt.event.MouseEvent evt,Timer t) {//GEN-FIRST:event_jLabel24MouseClicked
 
         // TODO add your handling code here:
         Component message = null;
@@ -557,33 +593,37 @@ public class Temperature_Tracking extends javax.swing.JFrame {
         lp2.setVisible(true);
         JFrame frame = new JFrame();
         frame.setVisible(false);
+        t.stop();
         dispose();
     }//GEN-LAST:event_jLabel24MouseClicked
 
-    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt,Timer t) {//GEN-FIRST:event_jLabel4MouseClicked
         // TODO add your handling code here:
         Manage_Account m = new Manage_Account();
         m.setVisible(true);
         JFrame frame = new JFrame();
         frame.setVisible(false);
+        t.stop();
         dispose();
     }//GEN-LAST:event_jLabel4MouseClicked
 
-    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt,Timer t) {//GEN-FIRST:event_jLabel3MouseClicked
         // TODO add your handling code here:
         ManageTransaction mt = new ManageTransaction();
         mt.setVisible(true);
         JFrame frame = new JFrame();
         frame.setVisible(false);
+        t.stop();
         dispose();
     }//GEN-LAST:event_jLabel3MouseClicked
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt,String TranID,Timer t) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        ManageTransaction mt = new ManageTransaction();
+        TransactionDetails mt = new TransactionDetails(TranID);
         mt.setVisible(true);
         JFrame frame = new JFrame();
         frame.setVisible(false);
+        t.stop();
         dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -611,64 +651,35 @@ public class Temperature_Tracking extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField6ActionPerformed
 
-    private void jLabel126MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel126MouseClicked
+    private void jLabel126MouseClicked(java.awt.event.MouseEvent evt,Timer t) {//GEN-FIRST:event_jLabel126MouseClicked
         // TODO add your handling code here:
         View_Product vp = new View_Product();
         vp.setVisible(true);
         JFrame frame = new JFrame();
         frame.setVisible(false);
+        t.stop();
         dispose();
     }//GEN-LAST:event_jLabel126MouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Temperature_Tracking.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Temperature_Tracking.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Temperature_Tracking.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Temperature_Tracking.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
+    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt,Timer t) {//GEN-FIRST:event_jLabel6MouseClicked
+        // TODO add your handling code here:
+        Dashboard da = new Dashboard();
+        da.setVisible(true);
+        JFrame frame = new JFrame();
+        frame.setVisible(false);
+        t.stop();
+        dispose();
+    }//GEN-LAST:event_jLabel6MouseClicked
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Temperature_Tracking().setVisible(true);
-            }
-        });
-    }
+    private void jLabel16MouseClicked(java.awt.event.MouseEvent evt,Timer t) {//GEN-FIRST:event_jLabel16MouseClicked
+        // TODO add your handling code here:
+        View_Devices vp = new View_Devices();
+        vp.setVisible(true);
+        JFrame frame = new JFrame();
+        frame.setVisible(false);
+        t.stop();
+        dispose();
+    }//GEN-LAST:event_jLabel16MouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton4;
@@ -680,6 +691,7 @@ public class Temperature_Tracking extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
@@ -687,7 +699,6 @@ public class Temperature_Tracking extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
