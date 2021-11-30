@@ -206,7 +206,7 @@ public class Add_Transaction extends javax.swing.JFrame {
         }
         else if(DatabaseAccess.Transaction_add(jTextField7.getText(),jTextField2.getText(),jTextField6.getText(),jTextField5.getText(),jTextField3.getText(),jTextField4.getText(),jTextField9.getText(),jTextField8.getText()))
         {
-            JOptionPane.showMessageDialog(null,"The account has succesfully added!");
+            JOptionPane.showMessageDialog(null,"The transaction has been succesfully added!");
             ManageTransaction mt = new ManageTransaction();
             mt.setVisible(true);
             JFrame frame = new JFrame();
